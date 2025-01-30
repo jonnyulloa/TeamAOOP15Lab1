@@ -111,10 +111,23 @@ public class Team15_Lab1 {
     
     private static void pawnMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
+        int initPosY = Character.getNumericValue(pos.charAt(1));
+        
         char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
+        int posY = Character.getNumericValue(toPos.charAt(1));
+
+        if (initPosX == posX && initPosY == posY){
+            System.out.println("The pawn is already in the coordinate you want to move to");
+            return;
+        }
+
+        if ((initPosX-posX)==1){
+            System.out.println("The move is acceptable for the pawn");
+        }else{
+            System.out.println("The move is not acceptable for the pawn piece");
+        }
+
+        
     }
     private static void knightMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
