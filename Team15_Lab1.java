@@ -35,12 +35,24 @@ public class Team15_Lab1 {
             }
             for (int i = 0; i < chessPieces.length; i++) {
                 switch (chessPieces[i].piece) {
-                    case "King": kingMovement(chessPieces[i].initPos, toPosition);
-                    case "Rook": rookMovement(chessPieces[i].initPos, toPosition);
-                    case "Pawn": pawnMovement(chessPieces[i].initPos, toPosition);
-                    case "Knight": knightMovement(chessPieces[i].initPos, toPosition);
-                    case "Queen": queenMovement(chessPieces[i].initPos, toPosition);
-                    case "Bishop": bishopMovement(chessPieces[i].initPos, toPosition);
+                    case "King": 
+                        kingMovement(chessPieces[i].initPos, toPosition);
+                        break;
+                    case "Rook": 
+                        rookMovement(chessPieces[i].initPos, toPosition);
+                        break;
+                    case "Pawn": 
+                        pawnMovement(chessPieces[i].initPos, toPosition);
+                        break;
+                    case "Knight": 
+                        knightMovement(chessPieces[i].initPos, toPosition);
+                        break;
+                    case "Queen": 
+                        queenMovement(chessPieces[i].initPos, toPosition);
+                        break;
+                    case "Bishop": 
+                        bishopMovement(chessPieces[i].initPos, toPosition);
+                        break;
                     default:
                         System.out.println("Unknown Piece");
                 }
@@ -50,47 +62,75 @@ public class Team15_Lab1 {
     }
 
     public static boolean validPosition(String toPos) {
-        return toPos.charAt(0) >= 'a' && toPos.charAt(0) <= 'h' && toPos.charAt(1) >= 1 && toPos.charAt(1) <= 8 && toPos.length() == 2;
-    }
-    static void kingMovement(String pos, String toPos) {
-        char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
-        char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        if (initPosX + 1 == posX || initPosX - 1 == posX || initPosY + 1 == posY || initPosY + 1 == posY) {
-            System.out.println("");
+        if (toPos.length() != 2){
+            return false;
         }
-        return;
+        return (toPos.charAt(0) >= 'a' && toPos.charAt(0) <= 'h' && toPos.charAt(1) >= '1' && toPos.charAt(1) <= '8');
     }
-    static void rookMovement(String pos, String toPos) {
+    private static void kingMovement(String pos, String toPos) {
+        char initPosX = pos.charAt(0);
+        int initPosY = Character.getNumericValue(pos.charAt(1));
+        
+        char posX = toPos.charAt(0);
+        int posY = Character.getNumericValue(toPos.charAt(1));
+
+        
+        if (initPosX == posX && initPosY == posY){
+            System.out.println("The king is already in the coordinate you want to move to");
+            return;
+        }
+        
+        if ((Math.abs(initPosX - posX) == 1 && initPosY == posY) || 
+                (Math.abs(initPosY - posY) == 1 && initPosX == posX) || 
+                (Math.abs(initPosX - posX) == 1 && Math.abs(initPosY - posY) == 1)){
+            System.out.println("The move is acceptable for the King piece");
+        }
+        else{
+            System.out.println("The move is not acceptable for the King piece");
+        }
+    }
+    private static void rookMovement(String pos, String toPos) {
+        char initPosX = pos.charAt(0);
+        int initPosY = Character.getNumericValue(pos.charAt(1));
+        
+        char posX = toPos.charAt(0);
+        int posY = Character.getNumericValue(toPos.charAt(1));
+
+        if (initPosX == posX && initPosY == posY){
+            System.out.println("The rook is already in the coordinate you want to move to");
+            return;
+        }
+        
+        if (initPosX == posX || initPosY == posY) {
+            System.out.println("The move is acceptable");
+        }
+        else{
+            System.out.println("The move is not acceptable for the Rook piece");
+        }
+    }
+    
+    private static void pawnMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
         char posY = toPos.charAt(1);
         return;
     }
-    static void pawnMovement(String pos, String toPos) {
+    private static void knightMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
         char posY = toPos.charAt(1);
         return;
     }
-    static void knightMovement(String pos, String toPos) {
+    private static void queenMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
         char posY = toPos.charAt(1);
         return;
     }
-    static void queenMovement(String pos, String toPos) {
-        char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
-        char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
-    }
-    static void bishopMovement(String pos, String toPos) {
+    private static void bishopMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
