@@ -121,7 +121,7 @@ public class Team15_Lab1 {
             return;
         }
 
-        if ((initPosX-posX)==1){
+        if ((initPosY-posY)==1 && initPosX==posX){
             System.out.println("The move is acceptable for the pawn");
         }else{
             System.out.println("The move is not acceptable for the pawn piece");
@@ -131,24 +131,49 @@ public class Team15_Lab1 {
     }
     private static void knightMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
+        int initPosY = Character.getNumericValue(pos.charAt(1));
+        
         char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
+        int posY = Character.getNumericValue(toPos.charAt(1));
+
+        if (initPosX == posX && initPosY == posY){
+            System.out.println("The knight is already in the coordinate you want to move to");
+            return;
+        }
+
+        
     }
     private static void queenMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
+        int initPosY = Character.getNumericValue(pos.charAt(1));
+        
         char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
+        int posY = Character.getNumericValue(toPos.charAt(1));
+
+        if (initPosX == posX && initPosY == posY){
+            System.out.println("The queen is already in the coordinate you want to move to");
+            return;
+        }
+        
     }
     private static void bishopMovement(String pos, String toPos) {
         char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
+        int initPosY = Character.getNumericValue(pos.charAt(1));
+        
         char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
+        int posY = Character.getNumericValue(toPos.charAt(1));
+
+        if (initPosX == posX && initPosY == posY){
+            System.out.println("The bishop is already in the coordinate you want to move to");
+            return;
+        }
+
+        if ((Math.abs(initPosX-posX)) == (Math.abs(initPosY-posX)){
+            System.out.println("The move is acceptable for the bishop");
+        }else{
+            System.out.println("The move is not acceptable for the bishop")
+        }
+        
     }
 }
 
