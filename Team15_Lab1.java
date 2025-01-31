@@ -168,7 +168,7 @@ public class Team15_Lab1 {
             return;
         }
 
-        if ((Math.abs(initPosX-posX)) == (Math.abs(initPosY-posX)){
+        if ((Math.abs(initPosX-posX)) == (Math.abs(initPosY-posY))){
             System.out.println("The move is acceptable for the bishop");
         }else{
             System.out.println("The move is not acceptable for the bishop")
