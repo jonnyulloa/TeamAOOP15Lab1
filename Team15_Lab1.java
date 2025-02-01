@@ -67,6 +67,9 @@ public class Team15_Lab1 {
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
         char posY = toPos.charAt(1);
+        if (initPosX == posX || initPosY == posY) {
+            System.out.println("");
+        }
         return;
     }
     static void pawnMovement(String pos, String toPos) {
@@ -74,6 +77,9 @@ public class Team15_Lab1 {
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
         char posY = toPos.charAt(1);
+        if ((initPosX == posX && initPosY + 1 == posY) || (initPosX == posX && initPosY + 2 == posY && initPosY == '2')) {
+            System.out.println("");
+        }
         return;
     }
     static void knightMovement(String pos, String toPos) {
@@ -81,6 +87,16 @@ public class Team15_Lab1 {
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
         char posY = toPos.charAt(1);
+        if ((initPosX + 2 == posX && initPosY + 1 == posY) ||
+            (initPosX + 2 == posX && initPosY - 1 == posY) ||
+            (initPosX + 1 == posX && initPosY + 2 == posY) ||
+            (initPosX + 1 == posX && initPosY - 2 == posY) ||
+            (initPosX - 2 == posX && initPosY + 1 == posY) ||
+            (initPosX - 2 == posX && initPosY - 1 == posY) ||
+            (initPosX - 1 == posX && initPosY + 2 == posY) ||
+            (initPosX - 1 == posX && initPosY - 2 == posY)) {
+            System.out.println("");
+        }
         return;
     }
     static void queenMovement(String pos, String toPos) {
@@ -88,6 +104,9 @@ public class Team15_Lab1 {
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
         char posY = toPos.charAt(1);
+        if (initPosX == posX || initPosY == posY || initPosX + (posY - initPosY) == posX || initPosX - (posY - initPosY) == posX) {
+            System.out.println("");
+        }
         return;
     }
     static void bishopMovement(String pos, String toPos) {
@@ -95,10 +114,11 @@ public class Team15_Lab1 {
         char initPosY = pos.charAt(1);
         char posX = toPos.charAt(0);
         char posY = toPos.charAt(1);
+        if (initPosX + (posY - initPosY) == posX || initPosX - (posY - initPosY) == posX) {
+            System.out.println("");
+        }
         return;
     }
-}
-
 class ChessPiece {
 
     String piece;
