@@ -33,7 +33,11 @@ public class Team15_Lab1 {
                 toPos = scanner.nextLine();
             }
             for (ChessPiece i : chessPieces) {
-                checkMove(i.piece, i.initPos.charAt(0), i.initPos.charAt(1), toPos.charAt(0), toPos.charAt(1));
+                if (validPos(i.initPos)) {
+                    checkMove(i.piece, i.initPos.charAt(0), i.initPos.charAt(1), toPos.charAt(0), toPos.charAt(1));
+                } else {
+                    System.out.println("The initial position of " + i.initPos + " for the " + i.piece + " is not a valid position.");
+                }
             }
             scanner.close();
         }
