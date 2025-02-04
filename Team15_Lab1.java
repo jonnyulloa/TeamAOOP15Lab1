@@ -49,8 +49,9 @@ public class Team15_Lab1 {
 
     static void checkMove(String piece, char initPosX, char initPosY, char toPosX, char toPosY) {
         boolean print = false;
+        String initPosXY = initPosX + "" + initPosY;
         String toPosXY = toPosX + "" + toPosY;
-        if ((initPosX + "" + initPosY).equals(toPosXY)) {
+        if (initPosXY.equals(toPosXY)) {
             System.out.println(piece + " is already in " + toPosXY);
             return;
         }
@@ -78,7 +79,7 @@ public class Team15_Lab1 {
                 print = (Math.abs(toPosY - initPosY) == Math.abs(toPosX - initPosX));
                 break;
         }
-        System.out.println(piece + (print ? " can " : " cannot ") + "move to " + toPosXY);  
+        System.out.println(piece + " at " + initPosXY + (print ? " can " : " cannot ") + "move to " + toPosXY);  
     }
 
     static class ChessPiece {
