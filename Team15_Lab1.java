@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -27,87 +26,71 @@ public class Team15_Lab1 {
         }
 
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Enter position to move pieces (e.g. e2, c3, h8): ");
-            String toPosition = scanner.nextLine();
-            while (!validPosition(toPosition)) {
+            System.out.println("First char must be a - h.\nSecond char must be 1-8.\nEnter position to move pieces: ");
+            String toPos = scanner.nextLine();
+            while (!validPos(toPos)) {
                 System.out.println("That position is not on the chess board. Try again.");
-                toPosition = scanner.nextLine();
+                toPos = scanner.nextLine();
             }
-            for (int i = 0; i < chessPieces.length; i++) {
-                switch (chessPieces[i].piece) {
-                    case "King": kingMovement(chessPieces[i].initPos, toPosition);
-                    case "Rook": rookMovement(chessPieces[i].initPos, toPosition);
-                    case "Pawn": pawnMovement(chessPieces[i].initPos, toPosition);
-                    case "Knight": knightMovement(chessPieces[i].initPos, toPosition);
-                    case "Queen": queenMovement(chessPieces[i].initPos, toPosition);
-                    case "Bishop": bishopMovement(chessPieces[i].initPos, toPosition);
-                    default:
-                        System.out.println("Unknown Piece");
-                }
+            for (ChessPiece i : chessPieces) {
+                checkMove(i.piece, i.initPos.charAt(0), i.initPos.charAt(1), toPos.charAt(0), toPos.charAt(1));
             }
             scanner.close();
         }
     }
 
-    public static boolean validPosition(String toPos) {
-        return toPos.charAt(0) >= 'a' && toPos.charAt(0) <= 'h' && toPos.charAt(1) >= 1 && toPos.charAt(1) <= 8 && toPos.length() == 2;
+    public static boolean validPos(String toPos) {
+        return (toPos.length() == 2 && 
+            toPos.charAt(0) >= 'a' && 
+            toPos.charAt(0) <= 'h' && 
+            toPos.charAt(1) >= '1' && 
+            toPos.charAt(1) <= '8');
     }
-    static void kingMovement(String pos, String toPos) {
-        char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
-        char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        if (initPosX + 1 == posX || initPosX - 1 == posX || initPosY + 1 == posY || initPosY + 1 == posY) {
-            System.out.println("");
+
+    static void checkMove(String piece, char initPosX, char initPosY, char toPosX, char toPosY) {
+        boolean print = false;
+        String toPosXY = toPosX + "" + toPosY;
+        if ((initPosX + "" + initPosY).equals(toPosXY)) {
+            System.out.println(piece + " is already in " + toPosXY);
+            return;
         }
-        return;
+        switch (piece) {
+            case "King": 
+                print = (Math.abs(initPosX - toPosX) == 1 && initPosY == toPosY) ||
+                        (Math.abs(initPosY - toPosY) == 1 && initPosX == toPosX) || 
+                        (Math.abs(initPosX - toPosX) == 1 && Math.abs(initPosY - toPosY) == 1); 
+                break;
+            case "Rook": 
+                print = (initPosX == toPosX || initPosY == toPosY);
+                break;
+            case "Pawn": 
+                print = initPosX == toPosX && (toPosY - initPosY == 1 || (initPosY == 2 && toPosY == 4));
+                break;
+            case "Knight": 
+                print = (Math.abs(toPosY - initPosY) == 2 && Math.abs(toPosX - initPosX) == 1) ||
+                        (Math.abs(toPosX - initPosX) == 2 && Math.abs(toPosY - initPosY) == 1);
+                break;
+            case "Queen":
+                print = (Math.abs(toPosY - initPosY) == Math.abs(toPosX - initPosX) || 
+                        (initPosX == toPosX) || (initPosY == toPosY));
+                break;
+            case "Bishop": 
+                print = (Math.abs(toPosY - initPosY) == Math.abs(toPosX - initPosX));
+                break;
+        }
+        System.out.println(piece + (print ? " can " : " cannot ") + "move to " + toPosXY);  
     }
-    static void rookMovement(String pos, String toPos) {
-        char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
-        char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
-    }
-    static void pawnMovement(String pos, String toPos) {
-        char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
-        char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
-    }
-    static void knightMovement(String pos, String toPos) {
-        char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
-        char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
-    }
-    static void queenMovement(String pos, String toPos) {
-        char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
-        char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
-    }
-    static void bishopMovement(String pos, String toPos) {
-        char initPosX = pos.charAt(0);
-        char initPosY = pos.charAt(1);
-        char posX = toPos.charAt(0);
-        char posY = toPos.charAt(1);
-        return;
-    }
-}
 
-class ChessPiece {
+    static class ChessPiece {
 
-    String piece;
-    String team;
-    String initPos;
+        String piece;
+        String team;
+        String initPos;
 
-    ChessPiece(String piece, String team, String initPos) {
-        this.piece = piece;
-        this.team = team;
-        this.initPos = initPos;
+        public ChessPiece(String piece, String team, String initPos) {
+            this.piece = piece;
+            this.team = team;
+            this.initPos = initPos;
+        }
     }
 }
