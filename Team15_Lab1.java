@@ -81,13 +81,13 @@ public class Team15_Lab1 {
         }
         //The program uses a switch case section to account for all the chess pieces possible
         switch (piece) {
-            case "King": // Derek
+            case "King": // Derek, Ugyen
                 //The King can only move one square horizontally, vertically, or diagonally
                 print = (Math.abs(initPosX - toPosX) == 1 && initPosY == toPosY) || //Check Horizontal move
                         (Math.abs(initPosY - toPosY) == 1 && initPosX == toPosX) || //Check Vertical Move
                         (Math.abs(initPosX - toPosX) == 1 && Math.abs(initPosY - toPosY) == 1); //Check diagonal move
                 break;
-            case "Rook": // Derek
+            case "Rook": // Derek, Ugyen
                 //The Rook can only move vertically or horizontally, with no limits on squares
                 print = (initPosX == toPosX || initPosY == toPosY); //Check horizontal move first then vertical
                 break;
@@ -101,7 +101,7 @@ public class Team15_Lab1 {
                         (Math.abs(toPosX - initPosX) == 2 && Math.abs(toPosY - initPosY) == 1); //Check whether the knight moved once in one direction then twice in the other
                                                                                                 //Using absolute value, we can check both directions
                 break;
-            case "Queen": // Jonathan
+            case "Queen": // Jonathan, Ugyen
                 //The queen can move vertically, horizontally, and diagonally with no limits on the number of squares
                 print = (Math.abs(toPosY - initPosY) == Math.abs(toPosX - initPosX) || 
                         (initPosX == toPosX) || (initPosY == toPosY)); //First check if the queen moved vertically, horizontally, then vertically
