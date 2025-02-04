@@ -3,6 +3,9 @@
 //The program then takes the input and checks for each chess piece if the move is acceptable
 //The move is based on each chess piece's rules for moving and where the chess piece is originally on the board
 
+//Changelog
+// 1/24/25 Jonathan: Added file reader, user input, chess piece class, and outline for chess piece movments.
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
