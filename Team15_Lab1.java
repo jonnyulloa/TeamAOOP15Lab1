@@ -4,6 +4,8 @@
 //The move is based on each chess piece's rules for moving and where the chess piece is originally on the board
 
 //Changelog
+//1/27/2025 Derek: completed check movement methods for pawn, king, rook, and knight
+//2/4/2025 Derek: Added comments explaining the methods
 // 1/24/25 Jonathan: Added file reader, user input, and outline for chess class and chess piece movments
 // 2/3/25 Jonathan: Simplified code
 
