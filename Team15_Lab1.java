@@ -6,7 +6,7 @@ public class Team15_Lab1 {
 
     public static void main(String[] args) {
         ChessPiece[] chessPieces = new ChessPiece[6];
-        try {
+        try { // Jonathan, Derek, Ugyen
             File file = new File("input.txt");
             try (Scanner scanner = new Scanner(file)) {
                 int count = 0;
@@ -25,6 +25,7 @@ public class Team15_Lab1 {
             System.out.println("File error: " + e.getMessage());
         }
 
+        // Derek, Jonathan, Ugyen
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("First char must be a - h.\nSecond char must be 1-8.\nEnter position to move pieces: ");
             String toPos = scanner.nextLine();
@@ -43,6 +44,7 @@ public class Team15_Lab1 {
         }
     }
 
+    // Jonathan, Derek
     public static boolean validPos(String toPos) {
         return (toPos.length() == 2 && 
             toPos.charAt(0) >= 'a' && 
@@ -51,6 +53,7 @@ public class Team15_Lab1 {
             toPos.charAt(1) <= '8');
     }
 
+    // Derek, Jonathan, Ugyen
     static void checkMove(String piece, char initPosX, char initPosY, char toPosX, char toPosY) {
         boolean print = false;
         String initPosXY = initPosX + "" + initPosY;
@@ -60,32 +63,33 @@ public class Team15_Lab1 {
             return;
         }
         switch (piece) {
-            case "King": 
+            case "King": // Derek
                 print = (Math.abs(initPosX - toPosX) == 1 && initPosY == toPosY) ||
                         (Math.abs(initPosY - toPosY) == 1 && initPosX == toPosX) || 
                         (Math.abs(initPosX - toPosX) == 1 && Math.abs(initPosY - toPosY) == 1); 
                 break;
-            case "Rook": 
+            case "Rook": // Derek
                 print = (initPosX == toPosX || initPosY == toPosY);
                 break;
-            case "Pawn": 
+            case "Pawn": // Derek, Jonathan
                 print = initPosX == toPosX && (toPosY - initPosY == 1 || (initPosY == 2 && toPosY == 4));
                 break;
-            case "Knight": 
+            case "Knight": // Derek, Ugyen
                 print = (Math.abs(toPosY - initPosY) == 2 && Math.abs(toPosX - initPosX) == 1) ||
                         (Math.abs(toPosX - initPosX) == 2 && Math.abs(toPosY - initPosY) == 1);
                 break;
-            case "Queen":
+            case "Queen": // Jonathan
                 print = (Math.abs(toPosY - initPosY) == Math.abs(toPosX - initPosX) || 
                         (initPosX == toPosX) || (initPosY == toPosY));
                 break;
-            case "Bishop": 
+            case "Bishop": // Derek, Jonathan
                 print = (Math.abs(toPosY - initPosY) == Math.abs(toPosX - initPosX));
                 break;
         }
         System.out.println(piece + " at " + initPosXY + (print ? " can " : " cannot ") + "move to " + toPosXY);  
     }
 
+    // Jonathan, Derek, Ugyen
     static class ChessPiece {
 
         String piece;
