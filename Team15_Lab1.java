@@ -4,7 +4,8 @@
 //The move is based on each chess piece's rules for moving and where the chess piece is originally on the board
 
 //Changelog
-// 1/24/25 Jonathan: Added file reader, user input, chess piece class, and outline for chess piece movments.
+// 1/24/25 Jonathan: Added file reader, user input, and outline for chess class and chess piece movments
+// 2/3/25 Jonathan: Simplified code
 
 import java.io.File;
 import java.io.FileNotFoundException;
