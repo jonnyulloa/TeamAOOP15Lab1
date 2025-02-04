@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Team15_Lab1 {
 
     public static void main(String[] args) {
-        //Create a new class of chessPiece to brreak down our problem and assign
+        //Create a new class of chessPiece to break down our problem and assign
         //each chess piece with its corresponding attributes
         ChessPiece[] chessPieces = new ChessPiece[6];
         try { // Jonathan, Derek, Ugyen
