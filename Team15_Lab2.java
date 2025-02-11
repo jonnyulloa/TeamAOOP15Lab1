@@ -9,6 +9,8 @@
 //2/4/2025 Derek: Added comments explaining the methods
 // 1/24/25 Jonathan: Added file reader, user input, and outline for chess class and chess piece movments
 // 2/3/25 Jonathan: Simplified code
+// 2/9/25 Ugyen: Got on call with Derek and simplified the code.
+// 2/19/25 Ugyen: Worked on the classes and attributes for each piece.
 
 import java.util.Scanner;
 
